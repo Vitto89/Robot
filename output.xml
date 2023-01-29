@@ -1,847 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.0 on win32)" generated="20230129 10:41:46.050" rpa="false" schemaversion="3">
-<suite id="s1" name="5 Petle" source="C:\Users\vdi-student\PycharmProjects\Robot\5_petle.robot">
-<test id="s1-t1" name="Nest Loops" line="10">
-<kw name="Create List" library="BuiltIn">
-<var>@{letters}</var>
-<arg>a</arg>
-<arg>b</arg>
-<arg>c</arg>
-<arg>d</arg>
-<doc>Returns a list containing given items.</doc>
-<msg timestamp="20230129 10:41:46.080" level="INFO">@{letters} = [ a | b | c | d ]</msg>
-<status status="PASS" starttime="20230129 10:41:46.080" endtime="20230129 10:41:46.080"/>
+<robot generator="Robot 6.0.2 (Python 3.11.0 on win32)" generated="20230129 13:49:29.066" rpa="false" schemaversion="3">
+<suite id="s1" name="11 API" source="C:\Users\vdi-student\PycharmProjects\Robot\11_API.robot">
+<test id="s1-t1" name="GET_STATUS" line="7">
+<kw name="GET" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>https://simple-books-api.glitch.me/status</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230129 13:49:29.850" level="INFO">GET Request : url=https://simple-books-api.glitch.me/status 
+ path_url=/status 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230129 13:49:29.850" level="INFO">GET Response : url=https://simple-books-api.glitch.me/status 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 29 Jan 2023 12:48:46 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '15', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"f-v/Y1JusChTxrQUzPtNAKycooOTA"'} 
+ body={"status":"OK"} 
+ </msg>
+<msg timestamp="20230129 13:49:29.850" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230129 13:49:29.246" endtime="20230129 13:49:29.850"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${letters}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.085" level="INFO">['a', 'b', 'c', 'd']</msg>
-<status status="PASS" starttime="20230129 10:41:46.085" endtime="20230129 10:41:46.085"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>status ${get_response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230129 13:49:29.850" endtime="20230129 13:49:29.850"/>
 </kw>
-<kw name="Create List" library="BuiltIn">
-<var>@{numbers}</var>
-<arg>${1}</arg>
-<arg>${2}</arg>
-<arg>${3}</arg>
-<doc>Returns a list containing given items.</doc>
-<msg timestamp="20230129 10:41:46.085" level="INFO">@{numbers} = [ 1 | 2 | 3 ]</msg>
-<status status="PASS" starttime="20230129 10:41:46.085" endtime="20230129 10:41:46.085"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${numbers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.085" level="INFO">[1, 2, 3]</msg>
-<status status="PASS" starttime="20230129 10:41:46.085" endtime="20230129 10:41:46.085"/>
-</kw>
-<for flavor="IN">
-<var>${letter}</var>
-<value>${letters}</value>
-<iter>
-<var name="${letter}">['a', 'b', 'c', 'd']</var>
-<for flavor="IN">
-<var>${number}</var>
-<value>${numbers}</value>
-<iter>
-<var name="${number}">[1, 2, 3]</var>
-<kw name="Log" library="BuiltIn">
-<arg>${letter} ${number}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.085" level="INFO">['a', 'b', 'c', 'd'] [1, 2, 3]</msg>
-<status status="PASS" starttime="20230129 10:41:46.085" endtime="20230129 10:41:46.085"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.085" endtime="20230129 10:41:46.085"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.085" endtime="20230129 10:41:46.085"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.085" endtime="20230129 10:41:46.085"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.085" endtime="20230129 10:41:46.085"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.080" endtime="20230129 10:41:46.085"/>
+<status status="PASS" starttime="20230129 13:49:29.246" endtime="20230129 13:49:29.850"/>
 </test>
-<test id="s1-t2" name="For Loop In Dictionary" line="22">
-<kw name="Log" library="BuiltIn">
-<arg>${dictionary}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.090" level="INFO">{'slowo': 'piesek', 'numer': '30', 'lista': ['pierwszy', 'drugi', 'trzeci', 'czwarty', 'piaty']}</msg>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
+<test id="s1-t2" name="GET_BOOKS" line="10">
+<kw name="GET" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>https://simple-books-api.glitch.me/books</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230129 13:49:30.313" level="INFO">GET Request : url=https://simple-books-api.glitch.me/books 
+ path_url=/books 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230129 13:49:30.313" level="INFO">GET Response : url=https://simple-books-api.glitch.me/books 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 29 Jan 2023 12:48:47 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '417', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"1a1-MfqhfTYtZO2sguD1mJq8Vf41WjU"'} 
+ body=[{"id":1,"name":"The Russian","type":"fiction","available":true},{"id":2,"name":"Just as I Am","type":"non-fiction","available":false},{"id":3,"name":"The Vanishing Half","type":"fiction","available":true},{"id":4,"name":"The Midnight Library","type":"fiction","available":true},{"id":5,"name":"Untamed","type":"non-fiction","available":true},{"id":6,"name":"Viscount Who Loved Me","type":"fiction","available":true}] 
+ </msg>
+<msg timestamp="20230129 13:49:30.313" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230129 13:49:29.855" endtime="20230129 13:49:30.313"/>
 </kw>
-<for flavor="IN">
-<var>${keys_and_values}</var>
-<value>&amp;{dictionary}</value>
-<iter>
-<var name="${keys_and_values}">('slowo', 'piesek')</var>
-<kw name="Log" library="BuiltIn">
-<arg>${keys_and_values}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.090" level="INFO">('slowo', 'piesek')</msg>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>status ${get_response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230129 13:49:30.313" endtime="20230129 13:49:30.318"/>
 </kw>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
-</iter>
-<iter>
-<var name="${keys_and_values}">('numer', '30')</var>
-<kw name="Log" library="BuiltIn">
-<arg>${keys_and_values}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.090" level="INFO">('numer', '30')</msg>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
-</iter>
-<iter>
-<var name="${keys_and_values}">('lista', ['pierwszy', 'drugi', 'trzeci', 'czwarty', 'piaty'])</var>
-<kw name="Log" library="BuiltIn">
-<arg>${keys_and_values}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.090" level="INFO">('lista', ['pierwszy', 'drugi', 'trzeci', 'czwarty', 'piaty'])</msg>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.090"/>
+<status status="PASS" starttime="20230129 13:49:29.855" endtime="20230129 13:49:30.318"/>
 </test>
-<test id="s1-t3" name="For Loop In Range With Index" line="28">
-<for flavor="IN RANGE">
-<var>${i}</var>
-<value>4</value>
-<iter>
-<var name="${i}">0</var>
-<kw name="Log" library="BuiltIn">
-<arg>${imiona}[${i}] ${nazwisko}[${i}]</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.095" level="INFO">Kamil Kowalski</msg>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
+<test id="s1-t3" name="ORDER" line="17">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230129 13:49:30.318" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer 0b4c27d8aaf5f42b1c3d153ff30588546a6be847f31d0ff83ef2df30857fe3e0'}</msg>
+<status status="PASS" starttime="20230129 13:49:30.318" endtime="20230129 13:49:30.318"/>
 </kw>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</iter>
-<iter>
-<var name="${i}">1</var>
-<kw name="Log" library="BuiltIn">
-<arg>${imiona}[${i}] ${nazwisko}[${i}]</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.095" level="INFO">Marta malinowski</msg>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${order_body}</var>
+<arg>bookId=4</arg>
+<arg>customerName=Kamil2</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230129 13:49:30.318" level="INFO">${order_body} = {'bookId': '4', 'customerName': 'Kamil2'}</msg>
+<status status="PASS" starttime="20230129 13:49:30.318" endtime="20230129 13:49:30.318"/>
 </kw>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</iter>
-<iter>
-<var name="${i}">2</var>
-<kw name="Log" library="BuiltIn">
-<arg>${imiona}[${i}] ${nazwisko}[${i}]</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.095" level="INFO">Augusto malinowski</msg>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
+<kw name="POST" library="RequestsLibrary">
+<var>${post_order_response}</var>
+<arg>https://simple-books-api.glitch.me/orders</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${order_body}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20230129 13:49:31.293" level="INFO">POST Request : url=https://simple-books-api.glitch.me/orders 
+ path_url=/orders 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer 0b4c27d8aaf5f42b1c3d153ff30588546a6be847f31d0ff83ef2df30857fe3e0', 'Content-Length': '41'} 
+ body=b'{"bookId": "4", "customerName": "Kamil2"}' 
+ </msg>
+<msg timestamp="20230129 13:49:31.293" level="INFO">POST Response : url=https://simple-books-api.glitch.me/orders 
+ status=201, reason=Created 
+ headers={'Date': 'Sun, 29 Jan 2023 12:48:48 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '50', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"32-nby5uaJSNM31GKKSj7FDVblViGg"'} 
+ body={"created":true,"orderId":"9Op4NxSLbtHXRtvEvnopr"} 
+ </msg>
+<msg timestamp="20230129 13:49:31.293" level="INFO">${post_order_response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230129 13:49:30.323" endtime="20230129 13:49:31.293"/>
 </kw>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</iter>
-<iter>
-<var name="${i}">3</var>
-<kw name="Log" library="BuiltIn">
-<arg>${imiona}[${i}] ${nazwisko}[${i}]</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.095" level="INFO">Marek Nowak</msg>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.090" endtime="20230129 10:41:46.095"/>
+<status status="PASS" starttime="20230129 13:49:30.318" endtime="20230129 13:49:31.293"/>
 </test>
-<test id="s1-t4" name="For Loop In List" line="33">
-<for flavor="IN">
-<var>${item}</var>
-<value>@{list_of_numbers}</value>
-<iter>
-<var name="${item}">1</var>
-<if>
-<branch type="IF" condition="${item} == 3">
-<kw name="Log" library="BuiltIn">
-<arg>${item}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</kw>
-<status status="NOT RUN" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.095"/>
-</iter>
-<iter>
-<var name="${item}">2</var>
-<if>
-<branch type="IF" condition="${item} == 3">
-<kw name="Log" library="BuiltIn">
-<arg>${item}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</kw>
-<status status="NOT RUN" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.100"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.100"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.100"/>
-</iter>
-<iter>
-<var name="${item}">3</var>
-<if>
-<branch type="IF" condition="${item} == 3">
-<kw name="Log" library="BuiltIn">
-<arg>${item}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.100" level="INFO">3</msg>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</iter>
-<iter>
-<var name="${item}">4</var>
-<if>
-<branch type="IF" condition="${item} == 3">
-<kw name="Log" library="BuiltIn">
-<arg>${item}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</kw>
-<status status="NOT RUN" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</iter>
-<iter>
-<var name="${item}">5</var>
-<if>
-<branch type="IF" condition="${item} == 3">
-<kw name="Log" library="BuiltIn">
-<arg>${item}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</kw>
-<status status="NOT RUN" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.100"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.100"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.095" endtime="20230129 10:41:46.100"/>
-</test>
-<test id="s1-t5" name="For Loop1" line="38">
-<for flavor="IN">
-<var>${name}</var>
-<value>@{imiona}</value>
-<iter>
-<var name="${name}">Kamil</var>
-<if>
-<branch type="IF" condition="$name == 'Augusto'">
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</kw>
-<status status="NOT RUN" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.105"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.105"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.105"/>
-</iter>
-<iter>
-<var name="${name}">Marta</var>
-<if>
-<branch type="IF" condition="$name == 'Augusto'">
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</kw>
-<status status="NOT RUN" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</iter>
-<iter>
-<var name="${name}">Augusto</var>
-<if>
-<branch type="IF" condition="$name == 'Augusto'">
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.105" level="INFO">Augusto</msg>
-<status status="PASS" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</iter>
-<iter>
-<var name="${name}">Marek</var>
-<if>
-<branch type="IF" condition="$name == 'Augusto'">
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</kw>
-<status status="NOT RUN" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</if>
-<status status="PASS" starttime="20230129 10:41:46.105" endtime="20230129 10:41:46.105"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.105"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.100" endtime="20230129 10:41:46.105"/>
-</test>
-<test id="s1-t6" name="FOR LOOP WITH BREAK" line="43">
-<kw name="Create List" library="BuiltIn">
-<var>@{my_list}</var>
-<arg>Mama</arg>
-<arg>Tato</arg>
-<arg>Pies</arg>
-<arg>Kot</arg>
-<arg>Ptak</arg>
-<arg>I</arg>
-<arg>jeszcze</arg>
-<arg>cos</arg>
-<doc>Returns a list containing given items.</doc>
-<msg timestamp="20230129 10:41:46.110" level="INFO">@{my_list} = [ Mama | Tato | Pies | Kot | Ptak | I | jeszcze | cos ]</msg>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</kw>
-<for flavor="IN">
-<var>${name}</var>
-<value>@{my_list}</value>
-<iter>
-<var name="${name}">Mama</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<break>
-<status status="NOT RUN" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</break>
-<status status="NOT RUN" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.110" level="INFO">Mama</msg>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</iter>
-<iter>
-<var name="${name}">Tato</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<break>
-<status status="NOT RUN" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</break>
-<status status="NOT RUN" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.110" level="INFO">Tato</msg>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</iter>
-<iter>
-<var name="${name}">Pies</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<break>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</break>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.110"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.110" endtime="20230129 10:41:46.115"/>
-</test>
-<test id="s1-t7" name="FOR LOOP WITH CONTINUE" line="51">
-<kw name="Create List" library="BuiltIn">
-<var>@{my_list}</var>
-<arg>Mama</arg>
-<arg>Tato</arg>
-<arg>Pies</arg>
-<arg>Kot</arg>
-<arg>Ptak</arg>
-<arg>I</arg>
-<arg>jeszcze</arg>
-<arg>cos</arg>
-<doc>Returns a list containing given items.</doc>
-<msg timestamp="20230129 10:41:46.115" level="INFO">@{my_list} = [ Mama | Tato | Pies | Kot | Ptak | I | jeszcze | cos ]</msg>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</kw>
-<for flavor="IN">
-<var>${name}</var>
-<value>@{my_list}</value>
-<iter>
-<var name="${name}">Mama</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.115" level="INFO">Mama</msg>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</iter>
-<iter>
-<var name="${name}">Tato</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.115" level="INFO">Tato</msg>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</iter>
-<iter>
-<var name="${name}">Pies</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<continue>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</continue>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</iter>
-<iter>
-<var name="${name}">Kot</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.115" level="INFO">Kot</msg>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.115"/>
-</iter>
-<iter>
-<var name="${name}">Ptak</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.120" level="INFO">Ptak</msg>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.120"/>
-</iter>
-<iter>
-<var name="${name}">I</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.120" level="INFO">I</msg>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</iter>
-<iter>
-<var name="${name}">jeszcze</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.120" level="INFO">jeszcze</msg>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</iter>
-<iter>
-<var name="${name}">cos</var>
-<if>
-<branch type="IF" condition="$name == 'Pies'">
-<continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</continue>
-<status status="NOT RUN" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</branch>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</if>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.120" level="INFO">cos</msg>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.120"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.115" endtime="20230129 10:41:46.120"/>
-</test>
-<test id="s1-t8" name="For Loop In Range 10" line="58">
-<for flavor="IN RANGE">
-<var>${i}</var>
-<value>10</value>
-<iter>
-<var name="${i}">0</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.120" level="INFO">0</msg>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.120"/>
-</iter>
-<iter>
-<var name="${i}">1</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">1</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.125"/>
-</iter>
-<iter>
-<var name="${i}">2</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">2</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</iter>
-<iter>
-<var name="${i}">3</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">3</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</iter>
-<iter>
-<var name="${i}">4</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">4</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</iter>
-<iter>
-<var name="${i}">5</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">5</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</iter>
-<iter>
-<var name="${i}">6</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">6</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</iter>
-<iter>
-<var name="${i}">7</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">7</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</iter>
-<iter>
-<var name="${i}">8</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">8</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</iter>
-<iter>
-<var name="${i}">9</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.125" level="INFO">9</msg>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.125"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.125"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.120" endtime="20230129 10:41:46.125"/>
-</test>
-<test id="s1-t9" name="For Loop In Range 4 10" line="63">
-<for flavor="IN RANGE">
-<var>${i}</var>
-<value>4</value>
-<value>10</value>
-<iter>
-<var name="${i}">4</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.130" level="INFO">4</msg>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</iter>
-<iter>
-<var name="${i}">5</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.130" level="INFO">5</msg>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</iter>
-<iter>
-<var name="${i}">6</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.130" level="INFO">6</msg>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</iter>
-<iter>
-<var name="${i}">7</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.130" level="INFO">7</msg>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</iter>
-<iter>
-<var name="${i}">8</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.130" level="INFO">8</msg>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</iter>
-<iter>
-<var name="${i}">9</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.130" level="INFO">9</msg>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.130"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.125" endtime="20230129 10:41:46.130"/>
-</test>
-<test id="s1-t10" name="For Loop In Range 4 30 3" line="68">
-<for flavor="IN RANGE">
-<var>${i}</var>
-<value>4</value>
-<value>30</value>
-<value>3</value>
-<iter>
-<var name="${i}">4</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.130" level="INFO">4</msg>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</iter>
-<iter>
-<var name="${i}">7</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.130" level="INFO">7</msg>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.130"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.135"/>
-</iter>
-<iter>
-<var name="${i}">10</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.135" level="INFO">10</msg>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</iter>
-<iter>
-<var name="${i}">13</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.135" level="INFO">13</msg>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</iter>
-<iter>
-<var name="${i}">16</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.135" level="INFO">16</msg>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</iter>
-<iter>
-<var name="${i}">19</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.135" level="INFO">19</msg>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</iter>
-<iter>
-<var name="${i}">22</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.135" level="INFO">22</msg>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</iter>
-<iter>
-<var name="${i}">25</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.135" level="INFO">25</msg>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</iter>
-<iter>
-<var name="${i}">28</var>
-<kw name="Log" library="BuiltIn">
-<arg>${i}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230129 10:41:46.135" level="INFO">28</msg>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</kw>
-<status status="PASS" starttime="20230129 10:41:46.135" endtime="20230129 10:41:46.135"/>
-</iter>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.135"/>
-</for>
-<status status="PASS" starttime="20230129 10:41:46.130" endtime="20230129 10:41:46.135"/>
-</test>
-<status status="PASS" starttime="20230129 10:41:46.050" endtime="20230129 10:41:46.140"/>
+<status status="PASS" starttime="20230129 13:49:29.066" endtime="20230129 13:49:31.298"/>
 </suite>
 <statistics>
 <total>
-<stat pass="10" fail="0" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="10" fail="0" skip="0" id="s1" name="5 Petle">5 Petle</stat>
+<stat pass="3" fail="0" skip="0" id="s1" name="11 API">11 API</stat>
 </suite>
 </statistics>
 <errors>
