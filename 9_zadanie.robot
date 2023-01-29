@@ -1,45 +1,49 @@
-
 *** Settings ***
 Library  SeleniumLibrary
-Test Setup  Open My Browser
+
+Test Setup  Open Browser
+
 *** Variables ***
-@{emails}  email1@wwp.pl  email2@wwp.pl   email3@wwp.pl   email4@wwp.pl   email5@wwp.pl
-@{passwords}  pass1  pass2  pass3  pass4  pass5
+@{emails}    email13@wp.pl    email23@wp.pl    email33@wp.pl    email43@wp.pl    email53@wp.pl
+@{passwords}    pass1    pass2    pass3    pass4    pass5
 ${message}    Dziękujemy za założenie nowego konta.
 *** Keywords ***
-Open My Browser
+Open Web_Browser
     Open Browser    https://gotujmy.pl/forum/    Chrome
-    Maximize Browser Window
-#    Execute JavaScript    document.body.stale.zoom='50%'
-    sleep    3
-    Scroll Element Into View    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
-    Run Keyword And Ignore Error    click button    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
-Registration In Forum
-    [Arguments]  ${name}   ${password}
+    maximize browser window
+    click window
+    execute javascript    document.body.style.zoom='50%'
+Registration in Forum
+    [Arguments]    ${name}    ${password}
+    Open Web_Browser
+    Sleep    10
+  # do sprawdzenia  scroll element into view    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
+  #  Sleep    10
+  # reczne zmniejszenie strony CTRL -
+    Run keyword and ignore error   Click Button     //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
     Click Element    //*[@id="navTop"]/nav/ul[1]/li[2]/a
-    Run Keyword And Ignore Error    click button    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
-    input text    //*[@id="f_cmu_email"]    ${name}
-    input text    //*[@id="f_cmu_email2"]    ${name}
-    input text    //*[@id="f_cmu_password"]     ${password}
-    input text    //*[@id="f_cmu_password2"]    ${password}
-    Checkbox Should Not Be Selected  //*[@id="newsletter_agree"]
-    select checkbox  //*[@id="newsletter_agree"]
-    Checkbox Should Not Be Selected  //*[@id="user_register_form"]/fieldset/label[2]/input
+    Run keyword and ignore error   Click Button     //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
+
+    Input Text    //*[@id="f_cmu_email"]    ${name}
+    Input Text    //*[@id="f_cmu_email2"]    ${name}
+    input text    //*[@id="f_cmu_password"]    ${password}
+    Input Text    //*[@id="f_cmu_password2"]    ${password}
+    checkbox should not be selected   //*[@id="newsletter_agree"]
+    select checkbox   //*[@id="newsletter_agree"]
+    checkbox should not be selected  //*[@id="user_register_form"]/fieldset/label[2]/input
     select checkbox  //*[@id="user_register_form"]/fieldset/label[2]/input
-    Checkbox Should Not Be Selected  //*[@id="user_register_form"]/fieldset/label[3]/input
-    select checkbox  //*[@id="user_register_form"]/fieldset/label[3]/input
-    Click Button    //*[@id="user_register_form"]/fieldset/footer/button
-    Wait Until Element Is Visible  //*[@id="main_content"]/div/div/h1  timeout=7
-    ${my_message}  Get Text  //*[@id="main_content"]/div/div/h1
-    Log To Console  ${my_message}
-    Should Be Equal As Strings  ${my_message}  ${message}
-    Capture Page Screenshot
+    checkbox should not be selected    //*[@id="user_register_form"]/fieldset/label[3]/input
+    select checkbox    //*[@id="user_register_form"]/fieldset/label[3]/input
+    click button     //*[@id="user_register_form"]/fieldset/footer/button
+    wait until element is visible    //*[@id="main_content"]/div/div/h1    timeout=7
+    ${my_message}    Get Text    //*[@id="main_content"]/div/div/h1
+    log to console    ${my_message}
+    should be equal as strings    ${my_message}  ${message}
+    capture page screenshot
+
 *** Test Cases ***
-Registraion Of Multiple User
-    FOR   ${i}   IN RANGE    5
-        Registration In Forum   ${emails}[${i}]    ${passwords}[${i}]
+Registration of Multiple User
+    FOR   ${i}    IN RANGE  5
+        Registration in Forum      ${emails}[${i}]    ${passwords}[${i}]
         Log    User ${emails}[${i}]
     END
-Unsuccessful Regiustratoin Different Names
-    sleep    1
-
